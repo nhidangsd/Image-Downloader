@@ -34,6 +34,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+// READ file & DOWNLOAD ALL IMAGES 
 const filePath = path.join(__dirname, 'dates.txt');
 try{
   downloadImages(filePath);
