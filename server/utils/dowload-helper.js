@@ -1,7 +1,7 @@
 const { DownloaderHelper } = require('node-downloader-helper');
 var path = require('path');
 const { getPhotoData, extractPhotoUrls } = require('./photo-utils');
-const destPath = path.join(__dirname, '..', '..', 'public', 'images')
+const destPath = path.join(__dirname, '..', '..', 'downloads')
 const fs = require('fs');
 const request = require('request');
 const { basename } = require('path');

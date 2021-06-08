@@ -15,8 +15,7 @@ export class PhotoService {
   constructor(private http:HttpClient) { }
 
   getPhotos() : Observable <Photo[]> {
-    const x = this.http.get<Photo[]>(this.apiUrl);
-    console.log(x)
+
     return this.http.get<Photo[]>(this.apiUrl)
       .pipe(map(res => {
         console.log(res)
