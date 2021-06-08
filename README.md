@@ -50,6 +50,6 @@ npm start --prefix client
 
 ## Expectation:
 
-- Server application will be runing on `http://localhost:300/` with data endpoint `/api/images`.
+- Server application will be runing on `http://localhost:3000/` with data endpoint `/api/images`.
 - Client application will be running on `http://localhost:4200/`.
 - All downloaded images will be available in folder `/downloads`.
