@@ -6,7 +6,7 @@ A full-stack application built with NodeJS, ExpressJS, and AngularJS 10.
 ## Summary
 
 This application will :
-- Fetch the Mars Rover photos by Earth date, which is read from a RTF (Rich Text Format) file called : `dates.txt` stored at the root directory. 
+- Fetch the Mars Rover photos from [NASA API](https://api.nasa.gov/) by Earth date which is read from a RTF (Rich Text Format) file called : `dates.txt` stored at the root directory. 
 - Download all images locally on the server side after fetching data and save them to folder `/downloads` .
 - Display all images on client side at `http://localhost:4200/`.
 
