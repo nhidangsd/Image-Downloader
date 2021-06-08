@@ -40,8 +40,7 @@ try{
   downloadImages(filePath);
 }
 catch(e){
-  console.log('nhi', err);
-  req.end();
+  console.log(e)
 }
 
 // error handler
@@ -56,7 +55,7 @@ app.use(function(err, req, res, next) {
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-  console.log('NHI Unhandled Rejection at:', promise, 'reason:', reason);
+  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
   // Application specific logging, throwing an error, or other logic here
   process.exit(2);
 });

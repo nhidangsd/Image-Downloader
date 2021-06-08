@@ -44,7 +44,11 @@ exports.downloadImages = async (filePath) => {
     try {
         const photoData = await getPhotoData(filePath);
         const photoUrls = await extractPhotoUrls(photoData);
-    
+        
+        // Create directory to store images if not exist
+        if (!fs.existsSync(destPath)){
+            fs.mkdirSync(destPath);
+        }
         await downloadImageHandler(photoUrls)
 
     }
