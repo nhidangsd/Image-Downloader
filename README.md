@@ -21,7 +21,7 @@ git clone https://github.com/nhidangsd/Image-Downloader.git
 
 **2. Navigate to the project directory:**
 ```
-cd image-downloader
+cd Image-Downloader
 ```
 **3. Download all the dependencies :**
 ```
