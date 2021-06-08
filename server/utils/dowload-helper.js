@@ -1,4 +1,4 @@
-const { DownloaderHelper } = require('node-downloader-helper');
+
 var path = require('path');
 const { getPhotoData, extractPhotoUrls } = require('./photo-utils');
 const destPath = path.join(__dirname, '..', '..', 'downloads')
@@ -8,11 +8,25 @@ const { basename } = require('path');
 const {chunk} = require('lodash');
 
 var separateReqPool = {maxSockets: 20};
-// {url: uri , pool: separateReqPool, host: 'mars.nasa.gov'}
+// {url: uri , pool: separateReqPool, hostname: 'mars.nasa.gov'}
+
 const download = (uri, filename, callback) => {
+
+    var options = {
+        // host: "proxy",
+        // port: 3000,
+        // path: uri,
+        // method: 'GET',
+        // headers: {
+        //     Host: "mars.nasa.gov"
+        // }
+    }
     return new Promise ((resolve, reject) => {
         request.head(uri, (err, res, body) => {
-            return request(uri).pipe(fs.createWriteStream(filename)).on('close', () => resolve(callback));
+            return request(uri, options).pipe(fs.createWriteStream(filename)).on('close', () => {
+                console.log(`=> File ${basename(uri)} has been downloaded.`);
+                return resolve(callback)
+            });
         });
     });
 };
@@ -26,7 +40,7 @@ const downloadImageHandler = async (arrayUrls) => {
         sequencePromisesChain = sequencePromisesChain.then(() => {
             return Promise.all(_Array20Urls.map((url) => {
                 const fileName = path.join(destPath, basename(url));
-                return download(url, fileName, () => console.log(url)); 
+                return download(url, fileName, () => {}); 
             }));
         }).then(() => {
             return new Promise(resolve => {
@@ -49,7 +63,10 @@ exports.downloadImages = async (filePath) => {
         if (!fs.existsSync(destPath)){
             fs.mkdirSync(destPath);
         }
-        await downloadImageHandler(photoUrls)
+        downloadImageHandler(photoUrls)
+        .then( () => {
+            console.log("All images has been downloaded.")
+        })
 
     }
     catch(err){
